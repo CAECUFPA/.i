@@ -89,7 +89,7 @@ h1 {
   min-width: 220px;
   text-align: center;
 }
-
+#saldo{color: var( --color-accent);}
 #entradas { color: #4caf50; }
 #saidas   { color: #f44336; }
 
