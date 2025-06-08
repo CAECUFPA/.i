@@ -1,0 +1,143 @@
+:root {
+  /* Cores */
+  --color-bg:        #102347;
+  --color-container: #1e3258ad;
+  --color-text:      #ffffff;
+  --color-accent:    #f2c94c;
+  --color-result-bg: #183157;
+
+  /* Espaçamentos */
+  --space-base: 10px;
+  --space-lg:   30px;
+  --space-md:   20px;
+  --space-sm:   8px;
+  --radius:     12px;
+
+  /* Tipografia */
+  --font-body: 'Times New Roman', serif;
+  --font-size-base:    1rem;
+  --font-size-h1:      1.8em;
+  --font-size-h1-sm:   1em;
+  --font-size-result:  1.8em;
+  --font-size-result-sm:1.8em;
+
+  /* Altura fixa da coruja */
+  --coruja-height: 200px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: var(--space-base);
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  background: var(--color-bg);
+  color: var(--color-text);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+/* Container empurrado para baixo pela metade da coruja */
+.container {
+  background: var(--color-container);
+  border-radius: var(--radius);
+  padding: var(--space-md) var(--space-md) var(--space-sm);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+
+  width: auto;
+  max-width: 95vw;
+  margin: calc(var(--space-lg) + var(--coruja-height) / 2) auto 0;
+  overflow-x: auto;
+  position: relative;
+  z-index: 2;  /* acima da coruja */
+}
+
+h1 {
+  margin: var(--space-md) 0;
+  font-size: var(--font-size-h1-sm);
+  color: var(--color-accent);
+  white-space: nowrap;
+  filter: brightness(1.1);
+}
+
+#resultado,
+#saldo-atual {
+    width: 500px;
+  display: inline-block;
+  margin-top: var(--space-base);
+  padding: var(--space-sm) calc(var(--space-base)*2);
+  font-size: var(--font-size-result-sm);
+  font-weight: bold;
+  color: var(--color-text);
+  background: var(--color-result-bg);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius);
+  opacity: 1;
+}
+
+#saldo-atual {
+  display: block;
+  margin: var(--space-md) auto 0;
+  min-width: 220px;
+  text-align: center;
+}
+
+#entradas { color: #4caf50; }
+#saidas   { color: #f44336; }
+
+.emoji {
+  vertical-align: middle;
+  width: 60px;
+  max-width: 30vw;
+  height: auto;
+}
+
+footer {
+  margin-top: var(--space-lg);
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/* Coruja fixa “atravessando” a container */
+.coruja {
+  position: absolute; /* Mude de fixed para absolute */
+  top: var(--space-lg); /* Ajuste conforme necessário */
+  left: 50%;
+  transform: translateX(-50%);
+  height: var(--coruja-height);
+  width: auto;
+  max-width: 90vw;
+  pointer-events: none;
+  filter: brightness(1.4);
+  z-index: 1;  /* atrás da container */
+}
+
+
+/* ========== Breakpoints ========== */
+@media (min-width: 601px) {
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+  #resultado,
+  #saldo-atual {
+    font-size: var(--font-size-result);
+    padding: var(--space-base) calc(var(--space-base)*2);
+  }
+  .container {
+    padding: var(--space-lg);
+  }
+}
+
+@media (max-width: 400px) {
+  .coruja {
+    height: 120px;
+  }
+}
