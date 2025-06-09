@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbzPzeqABuPHrsR6WvlUmZiwVKsrm5OoxgAt0iwDd2jgrv0YEjojo3FLEv80_jPYerg/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxxQZnI8h7dffH6683uk6Y2gGBg4rRIAOP1VcNXW_Pf1GUEvQTY0GduZ_fo-5DRj91V/exec";
 
 async function exibirValores() {
   try {
