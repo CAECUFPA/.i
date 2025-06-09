@@ -26,10 +26,16 @@ async function exibirValores() {
     document.getElementById("saidas").textContent = saidas;
     document.getElementById("saldo").textContent = saldo;
 
+    // Atualiza horário
+    const agora = new Date();
+    document.getElementById("ultima-atualizacao").textContent =
+      "Última atualização: " + agora.toLocaleTimeString("pt-BR");
+
   } catch (erro) {
     document.getElementById("resultado").innerHTML = "Erro ao carregar os dados.";
     console.error("Erro ao buscar dados:", erro);
   }
 }
 
-exibirValores();
+exibirValores(); // primeira chamada
+setInterval(exibirValores, 300000); // a cada 5 minutos (300.000 ms)
