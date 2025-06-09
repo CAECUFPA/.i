@@ -1,28 +1,35 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbxxQZnI8h7dffH6683uk6Y2gGBg4rRIAOP1VcNXW_Pf1GUEvQTY0GduZ_fo-5DRj91V/exec";
-
+const API_URL = "https://script.google.com/macros/s/AKfycbzPzeqABuPHrsR6WvlUmZiwVKsrm5OoxgAt0iwDd2jgrv0YEjojo3FLEv80_jPYerg/exec";
 async function exibirValores() {
   try {
     const resposta = await fetch(API_URL);
     const dados = await resposta.json();
 
-    const entradas = parseFloat(dados.entradas).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-    const saidas = parseFloat(dados.saidas).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-    const saldo = parseFloat(dados.saldo).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    // Formatações
+    const entradas = parseFloat(dados.entradas).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
 
+    const saidas = parseFloat(dados.saidas).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
+
+    const saldo = parseFloat(dados.saldo).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
+
+    // Atualiza HTML
     document.getElementById("entradas").textContent = entradas;
     document.getElementById("saidas").textContent = saidas;
     document.getElementById("saldo").textContent = saldo;
 
-    const agora = new Date();
-    document.getElementById("ultima-atualizacao").textContent = "Última atualização: " + agora.toLocaleTimeString("pt-BR");
-
-    document.getElementById("resultado").textContent = "";
-
   } catch (erro) {
-    document.getElementById("resultado").textContent = "Erro ao carregar os dados.";
+    document.getElementById("resultado").innerHTML = "Erro ao carregar os dados.";
     console.error("Erro ao buscar dados:", erro);
   }
 }
 
 exibirValores();
-setInterval(exibirValores, 60000); // 60.000 ms = 1 minuto
+setInterval(exibirValores, 60000); // Atualiza a cada 1 minuto (60000 ms)
