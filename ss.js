@@ -32,5 +32,6 @@ async function exibirValores() {
   }
 }
 
+
 exibirValores();
 setInterval(buscarDados, 300000); // 5 minutos = 300000 ms
