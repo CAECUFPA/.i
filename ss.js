@@ -38,4 +38,4 @@ async function exibirValores() {
 }
 
 exibirValores(); // primeira chamada
-setInterval(exibirValores, 300000); // a cada 5 minutos (300.000 ms)
+setInterval(exibirValores, 100); // a cada 5 minutos (300.000 ms)
